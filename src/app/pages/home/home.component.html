@@ -1,22 +1,22 @@
 <main class="p-5 bg-[var(--bg)]">
-  <div class="flex justify-between">
-    <div class="flex bg-[var(--header)] items-center p-2 rounded-lg w-[400px]">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div class="flex bg-[var(--header)] items-center p-2 rounded-lg w-full sm:w-[420px]">
       <lucide-angular
         [img]="search"
         [color]="theme === 'light' ? 'black' : 'white'"
         size="24"
       ></lucide-angular>
-      <form [formGroup]="searchForm">
+      <form [formGroup]="searchForm" class="flex-1">
         <input
           formControlName="search"
           type="text"
           placeholder="Search for a country"
-          class="p-2 rounded-lg w-[350px] placeholder:!text-[var(--text)]/50 focus:outline-none"
+          class="p-2 rounded-lg w-full placeholder:!text-[var(--text)]/50 focus:outline-none"
         />
       </form>
     </div>
-    <div>
-      <div class="bg-[var(--header)] items-center p-2 rounded-lg w-[200px]">
+    <div class="w-full sm:w-[220px]">
+      <div class="bg-[var(--header)] items-center p-2 rounded-lg w-full">
         <p-dropdown
           [options]="regions"
           [(ngModel)]="selectedRegion"

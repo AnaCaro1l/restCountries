@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { LucideAngularModule, ChevronLeft, ChevronRight } from 'lucide-angular';
 
 interface Country {
   name: { common: string };
@@ -14,11 +15,13 @@ interface Country {
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LucideAngularModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
+  readonly chevronLeft = ChevronLeft;
+  readonly chevronRight = ChevronRight;
   apiUrl = 'http://localhost:3333/countries';
 
   countries: Country[] = [];
@@ -28,9 +31,8 @@ export class CardComponent {
   @Input() searchTerm: string | null = null;
   @Input() region: string | null = null;
 
-  // Pagination state
   page = 1;
-  pageSize = 12;
+  pageSize = 20;
   total = 0;
 
   ngOnInit() {

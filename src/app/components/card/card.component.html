@@ -29,9 +29,21 @@
 
 <!-- Pagination controls -->
 <div class="flex items-center justify-center gap-4 mt-6" *ngIf="total > pageSize">
-  <button class="bg-[var(--header)] px-3 py-1 rounded shadow" (click)="prevPage()" [disabled]="page === 1">Prev</button>
+  <button class="bg-[var(--header)] px-3 py-1 rounded shadow" (click)="prevPage()" [disabled]="page === 1">
+    <lucide-angular
+      [img]="chevronLeft"
+      [color]="'black'"
+      size="24"
+    ></lucide-angular>
+  </button>
   <span>Page {{ page }} of {{ totalPages }}</span>
-  <button class="bg-[var(--header)] px-3 py-1 rounded shadow" (click)="nextPage()" [disabled]="page * pageSize >= total">Next</button>
+  <button class="bg-[var(--header)] px-3 py-1 rounded shadow" (click)="nextPage()" [disabled]="page * pageSize >= total">
+    <lucide-angular
+      [img]="chevronRight"
+      [color]="'black'"
+      size="24"
+    ></lucide-angular>
+  </button>
 </div>
 
 <ng-template #loadingTpl>
