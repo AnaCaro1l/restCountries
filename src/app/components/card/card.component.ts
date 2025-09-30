@@ -76,7 +76,6 @@ export class CardComponent {
       });
   }
 
-  // Pagination actions
   nextPage() {
     if (this.page * this.pageSize < this.total) {
       this.page++;
@@ -91,12 +90,10 @@ export class CardComponent {
     }
   }
 
-  // Reset pagination when filters change
   private resetPagination() {
     this.page = 1;
   }
 
-  // Derived values
   get totalPages(): number {
     return Math.max(1, Math.ceil(this.total / this.pageSize));
   }
