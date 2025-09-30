@@ -27,7 +27,6 @@
   </ng-container>
 </div>
 
-<!-- Pagination controls -->
 <div class="flex items-center justify-center gap-4 mt-6" *ngIf="total > pageSize">
   <button class="bg-[var(--header)] px-3 py-1 rounded shadow" (click)="prevPage()" [disabled]="page === 1">
     <lucide-angular

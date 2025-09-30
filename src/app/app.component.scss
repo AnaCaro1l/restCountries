@@ -2,6 +2,7 @@
   transition: background 0.3s ease;
   background: var(--bg);
   color: var(--text);
+  min-height: 100vh; /* Ensure background covers full viewport */
 
   &.theme-dark {
     --bg: #181f32;
