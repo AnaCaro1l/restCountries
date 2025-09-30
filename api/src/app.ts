@@ -11,8 +11,10 @@ app.use(
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   })
 );
-app.use('/', countriesRoutes);
+
 app.use(express.json());
+
+app.use('/', countriesRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
