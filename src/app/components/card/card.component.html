@@ -1,0 +1,39 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  <ng-container *ngIf="!isLoading; else loadingTpl">
+    <a *ngFor="let country of filteredCountries" [routerLink]="['/details', country['cca3']]" class="block">
+      <div
+        class="card bg-[var(--header)] rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+        <img
+          [src]="country.flags?.svg || country.flags?.png"
+          [alt]="country.flags?.alt || country.name.common"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-5">
+          <h2 class="font-bold text-xl mb-3">{{ country.name.common }}</h2>
+          <p class="mb-1">
+            <span class="font-semibold">Population:</span>
+            {{ country.population | number }}
+          </p>
+          <p class="mb-1">
+            <span class="font-semibold">Region:</span> {{ country.region }}
+          </p>
+          <p class="mb-1">
+            <span class="font-semibold">Capital:</span> {{ country.capital?.[0] || '-' }}
+          </p>
+        </div>
+      </div>
+    </a>
+  </ng-container>
+</div>
+
+<!-- Pagination controls -->
+<div class="flex items-center justify-center gap-4 mt-6" *ngIf="total > pageSize">
+  <button class="bg-[var(--header)] px-3 py-1 rounded shadow" (click)="prevPage()" [disabled]="page === 1">Prev</button>
+  <span>Page {{ page }} of {{ totalPages }}</span>
+  <button class="bg-[var(--header)] px-3 py-1 rounded shadow" (click)="nextPage()" [disabled]="page * pageSize >= total">Next</button>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="text-[var(--text)]/70">Loading countries...</div>
+</ng-template>

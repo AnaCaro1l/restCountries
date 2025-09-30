@@ -17,35 +17,5 @@
     </div>
   </div>
 </header>
-<main class="p-5 bg-[var(--bg)]">
-  <div class="flex justify-between">
-    <div class="flex bg-[var(--header)] items-center p-2 rounded-lg w-[400px]">
-      <lucide-angular
-        [img]="search"
-        [color]="theme === 'light' ? 'black' : 'white'"
-        size="24"
-      ></lucide-angular>
-      <form [formGroup]="searchForm">
-        <input
-          formControlName="search"
-          type="text"
-          placeholder="Search for a country"
-          class="p-2 rounded-lg w-[350px] placeholder:!text-[var(--text)]/50 focus:outline-none"
-        />
-      </form>
-    </div>
-    <div>
-      <div class="bg-[var(--header)] items-center p-2 rounded-lg w-[200px]">
-        <p-dropdown
-          [options]="regions"
-          [(ngModel)]="selectedRegion"
-          [showClear]="true"
-          optionLabel="name"
-          placeholder="Select a Region"
-          panelClass="!bg-white !rounded-lg !shadow-md"
-          styleClass="!w-full !bg-[var(--header)] !text-[var(--text)] !border-none"
-        ></p-dropdown>
-      </div>
-    </div>
-  </div>
-</main>
+<router-outlet></router-outlet>
+

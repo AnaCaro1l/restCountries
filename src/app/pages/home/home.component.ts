@@ -1,20 +1,18 @@
-import { Component, HostBinding } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { LucideAngularModule, Moon, Sun, Search } from 'lucide-angular';
+import { Component } from '@angular/core';
+import { CardComponent } from '../../components/card/card.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { NgFor } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
-import { CardComponent } from './components/card/card.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { LucideAngularModule, Moon, Search, Sun } from 'lucide-angular';
+import { MatButtonModule } from '@angular/material/button';
 
 interface Region {
     name: string;
 }
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
   imports: [
     MatButtonModule,
@@ -24,12 +22,12 @@ interface Region {
     MatFormFieldModule,
     DropdownModule,
     FormsModule,
-    RouterOutlet
-],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    CardComponent,
+  ],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
 })
-export class AppComponent {
+export class HomeComponent {
   readonly sun = Sun;
   readonly moon = Moon;
   readonly search = Search;
@@ -51,14 +49,5 @@ export class AppComponent {
       { name: 'Europe' },
       { name: 'Oceania' },
     ];
-  }
-
-  @HostBinding('class')
-  get themeClass() {
-    return `theme-${this.theme}`;
-  }
-
-  toggleTheme() {
-    this.theme = this.theme === 'light' ? 'dark' : 'light';
   }
 }

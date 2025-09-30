@@ -1,0 +1,49 @@
+<main class="p-5 bg-[var(--bg)] text-[var(--text)]" *ngIf="!isLoading && country; else loadingTpl">
+	<button class="bg-[var(--header)] px-4 py-2 rounded shadow flex items-center gap-2 mb-10" (click)="goBack()">
+		← Back
+	</button>
+
+	<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+		<img [src]="country.flag" [alt]="country.name" class="w-full h-auto rounded shadow-xl" />
+
+		<div>
+			<h2 class="text-3xl font-extrabold mb-6">{{ country.name }}</h2>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+				<div>
+					<p><span class="font-semibold">Native Name:</span> {{ country.nativeName }}</p>
+					<p><span class="font-semibold">Population:</span> {{ country.population | number }}</p>
+					<p><span class="font-semibold">Region:</span> {{ country.region }}</p>
+					<p><span class="font-semibold">Sub Region:</span> {{ country.subregion }}</p>
+					<p><span class="font-semibold">Capital:</span> {{ country.capital }}</p>
+				</div>
+				<div>
+					<p><span class="font-semibold">Top Level Domain:</span> {{ country.tld }}</p>
+					<p><span class="font-semibold">Currencies:</span> {{ country.currencies }}</p>
+					<p><span class="font-semibold">Languages:</span> {{ country.languages }}</p>
+				</div>
+			</div>
+
+			<div class="flex items-center gap-3 flex-wrap">
+				<span class="font-semibold mr-2">Border Countries:</span>
+				<ng-container *ngIf="country.borders?.length; else noBorders">
+					<button
+						*ngFor="let b of country.borders"
+						class="bg-[var(--header)] px-3 py-1 rounded shadow text-sm"
+						(click)="goToBorder(b.code)"
+					>
+						{{ b.name }}
+					</button>
+				</ng-container>
+				<ng-template #noBorders>
+					<span>-</span>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</main>
+
+<ng-template #loadingTpl>
+	<div class="p-5 text-[var(--text)]/70">Loading details...</div>
+  
+</ng-template>
