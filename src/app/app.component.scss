@@ -1,0 +1,88 @@
+:host {
+  transition: background 0.3s ease;
+  background: var(--bg);
+  color: var(--text);
+
+  &.theme-dark {
+    --bg: #181f32;
+    --text: white;
+    --header: #252c3f;
+  }
+
+  &.theme-light {
+    --bg: #ffffff;
+    --text: #000;
+    --header: #f0f0f0;
+  }
+}
+
+.header {
+  background: var(--header);
+}
+
+:host ::ng-deep {
+  .p-dropdown {
+    width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: var(--header) !important;
+    color: var(--text) !important;
+    padding: 0.5rem 0.75rem !important;
+    /* Ensure positioned children like clear icon can be centered vertically */
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .p-dropdown .p-dropdown-label {
+    color: var(--text) !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  .p-dropdown .p-dropdown-trigger {
+    color: var(--text) !important;
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .p-dropdown-clear-icon {
+    color: var(--text) !important;
+    /* absolute center vertically inside dropdown */
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .p-dropdown-panel {
+    width: 200px !important;
+    border: none !important;
+  }
+
+  .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    color: #000 !important; 
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  .p-dropdown-panel
+    .p-dropdown-items
+    .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+    background-color: #f0f0f0 !important; 
+    color: #000 !important;
+  }
+
+  .p-dropdown-panel
+    .p-dropdown-items
+    .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+    background-color: #f0f0f0 !important; 
+    color: #000 !important;
+  }
+}
