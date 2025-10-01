@@ -55,11 +55,11 @@ export class CardComponent {
   fetchCountries() {
     this.isLoading = true;
     const url = new URL(this.apiUrl);
-  if (this.searchTerm) url.searchParams.set('name', this.searchTerm);
-  if (this.region) url.searchParams.set('region', this.region);
+    if (this.searchTerm) url.searchParams.set('name', this.searchTerm);
+    if (this.region) url.searchParams.set('region', this.region);
     url.searchParams.set('page', String(this.page));
     url.searchParams.set('pageSize', String(this.pageSize));
-  fetch(url.toString())
+    fetch(url.toString())
       .then((response) => {
         const totalHeader = response.headers.get('X-Total-Count');
         this.total = totalHeader ? parseInt(totalHeader, 10) : 0;
@@ -79,6 +79,7 @@ export class CardComponent {
   nextPage() {
     if (this.page * this.pageSize < this.total) {
       this.page++;
+      this.scrollToTop();
       this.fetchCountries();
     }
   }
@@ -86,6 +87,7 @@ export class CardComponent {
   prevPage() {
     if (this.page > 1) {
       this.page--;
+      this.scrollToTop();
       this.fetchCountries();
     }
   }
@@ -96,5 +98,11 @@ export class CardComponent {
 
   get totalPages(): number {
     return Math.max(1, Math.ceil(this.total / this.pageSize));
+  }
+
+  private scrollToTop() {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 }

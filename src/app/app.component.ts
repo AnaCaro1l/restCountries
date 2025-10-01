@@ -33,7 +33,7 @@ export class AppComponent {
   readonly sun = Sun;
   readonly moon = Moon;
   readonly search = Search;
-  theme: 'light' | 'dark' = 'light';
+  theme: 'light' | 'dark' = 'dark';
 
   searchForm = new FormGroup({
     search: new FormControl(''),
